@@ -158,6 +158,12 @@ main {
   color: #222;
 }
 
+.project-credit {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
 .live-shell {
   padding: 28px;
   border-radius: 30px;
