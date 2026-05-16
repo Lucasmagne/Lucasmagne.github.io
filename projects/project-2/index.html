@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LucasGPT</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="project-page lucasgpt-page">
+  <main class="project-main">
+    <p><a class="back-link" href="/">Back home</a></p>
+
+    <section class="project-hero">
+      <div class="project-hero-text">
+        <h1>LucasGPT</h1>
+        <p class="project-tagline">A custom GPT-2 playground where users can write a prompt, tune generation settings, and watch the model continue the text.</p>
+        <div class="project-actions">
+          <a class="project-button" href="/projects/project-2/live/">🫧 Open Live Page</a>
+        </div>
+      </div>
+      <div class="project-hero-emoji" aria-hidden="true">🫧</div>
+    </section>
+
+    <section class="project-section">
+      <h2>What It Does</h2>
+      <p>
+        LucasGPT is a text generation website built around GPT-2. A user enters a prompt, chooses settings like the number of new tokens,
+        temperature, and whether sampling is enabled, and then the model generates a continuation of the text.
+        The site also shows model status information and includes a simple copy button so users can easily reuse the generated output.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>How I Built It</h2>
+      <p>
+        I built LucasGPT with a Python backend and a custom frontend. On the backend, I used PyTorch together with Hugging Face Transformers,
+        specifically <code>GPT2LMHeadModel</code> and <code>GPT2Tokenizer</code>, to load GPT-2 and generate text.
+        The app checks whether a local cached model already exists and, if not, downloads GPT-2 and saves it into a local model directory for future runs.
+        The server exposes lightweight endpoints for checking model status and generating completions.
+      </p>
+      <p>
+        On the frontend, I built a custom interface with HTML, CSS, and JavaScript.
+        The page lets users type prompts, adjust generation settings, send requests to the backend, and render the model's output in a clean text studio layout.
+        I also added status messaging and copy-to-clipboard behavior to make the experience feel more like a real interactive writing tool.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

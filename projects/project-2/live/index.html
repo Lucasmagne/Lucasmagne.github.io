@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LucasGPT Live Preview</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="project-page lucasgpt-page">
+  <main class="project-main">
+    <p><a class="back-link" href="/projects/project-2/">Back to project</a></p>
+
+    <section class="live-shell">
+      <div class="live-topbar">
+        <div>
+          <p class="section-kicker">Live Preview</p>
+          <h1>LucasGPT</h1>
+        </div>
+        <span class="status-pill status-loading">Static GitHub Preview</span>
+      </div>
+
+      <p class="live-note">
+        This page mirrors the LucasGPT interface inside my GitHub Pages site. The full version uses a Python backend to serve GPT-2 generation,
+        so this preview focuses on the design and workflow of the app.
+      </p>
+
+      <section class="live-studio">
+        <div class="live-panel">
+          <div class="section-heading">
+            <p class="section-kicker">Input</p>
+            <h2>Prompt</h2>
+          </div>
+
+          <label class="field">
+            <span>Prompt</span>
+            <textarea rows="9" readonly>Once upon a time in a land far away,</textarea>
+          </label>
+
+          <div class="controls">
+            <label class="field compact">
+              <span>New tokens</span>
+              <input type="number" value="120" readonly>
+            </label>
+            <label class="field compact">
+              <span>Temperature</span>
+              <input type="number" value="0.8" readonly>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" checked disabled>
+              <span>Sampling on</span>
+            </label>
+          </div>
+
+          <button class="generate-button" disabled>Generate with LucasGPT</button>
+        </div>
+
+        <div class="live-panel output-panel">
+          <div class="output-header">
+            <div class="section-heading tight">
+              <p class="section-kicker">Output</p>
+              <h2>Generated text</h2>
+            </div>
+            <button class="ghost-button" disabled>Copy</button>
+          </div>
+          <pre class="live-output">Your GPT-2 output would appear here in the full backend-powered version of LucasGPT.</pre>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

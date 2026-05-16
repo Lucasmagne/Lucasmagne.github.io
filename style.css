@@ -87,6 +87,12 @@ main {
   transform: translateY(-1px);
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .project-hero {
   display: flex;
   align-items: center;
@@ -109,6 +115,13 @@ main {
   background:
     radial-gradient(circle at top right, rgba(255, 212, 74, 0.2), transparent 28%),
     linear-gradient(180deg, #fffaf0 0%, #f7f7f7 100%);
+}
+
+.lucasgpt-page {
+  background:
+    radial-gradient(circle at top left, rgba(200, 241, 105, 0.32), transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 183, 207, 0.28), transparent 26%),
+    linear-gradient(160deg, #fffdf8 0%, #ffeef5 100%);
 }
 
 .project-main {
@@ -154,6 +167,52 @@ main {
   color: #222;
 }
 
+.live-shell {
+  padding: 28px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(112, 145, 89, 0.18);
+  box-shadow: 0 20px 50px rgba(144, 167, 110, 0.16);
+}
+
+.live-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.live-note {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4f5a47;
+  margin-bottom: 22px;
+}
+
+.live-studio {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+}
+
+.live-panel {
+  padding: 18px;
+  background: rgba(255, 252, 255, 0.92);
+  border: 1px solid rgba(112, 145, 89, 0.18);
+  border-radius: 24px;
+}
+
+.live-output {
+  margin: 0;
+  min-height: 380px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 0.96rem;
+  font-family: "IBM Plex Mono", monospace;
+  color: #31412b;
+}
+
 @media (max-width: 768px) {
   .intro {
     flex-direction: column;
@@ -180,5 +239,23 @@ main {
   .project-section p,
   .project-tagline {
     font-size: 1rem;
+  }
+
+  .live-shell {
+    padding: 20px;
+  }
+
+  .live-topbar,
+  .live-studio,
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .live-topbar {
+    flex-direction: column;
+  }
+
+  .live-output {
+    min-height: 260px;
   }
 }
