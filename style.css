@@ -33,12 +33,19 @@ main {
   line-height: 1.6;
 }
 
+.intro-images {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
 .intro-image {
   flex-shrink: 0;
 }
 
 .intro-image img {
-  width: 260px;
+  width: 220px;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
@@ -271,8 +278,13 @@ main {
     align-items: flex-start;
   }
 
+  .intro-images {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .intro-image img {
-    width: 200px;
+    width: min(44vw, 200px);
   }
 
   .grid {
