@@ -228,6 +228,20 @@ main {
   display: block;
 }
 
+.pdf-wrapper {
+  width: 100%;
+  height: 720px;
+  margin-top: 16px;
+}
+
+.pdf-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 14px;
+  display: block;
+}
+
 .live-shell {
   padding: 28px;
   border-radius: 30px;
@@ -335,5 +349,9 @@ main {
 
   .live-output {
     min-height: 260px;
+  }
+
+  .pdf-wrapper {
+    height: 520px;
   }
 }
