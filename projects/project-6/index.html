@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Focus</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="project-page">
+  <main class="project-main">
+    <p><a class="back-link" href="/">Back home</a></p>
+
+    <section class="project-hero">
+      <div class="project-hero-text">
+        <h1>First Focus</h1>
+        <p class="project-tagline">An aerial-imagery emergency response system that prioritizes the most urgent disaster zones, road access issues, and possible helicopter landing areas.</p>
+        <div class="project-actions">
+          <a class="project-button" href="https://huggingface.co/spaces/Lucasmagne/NaturalDisaster" target="_blank" rel="noopener noreferrer">Open Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Overview of Project</h2>
+      <p>
+        This project uses aerial imagery to support natural disaster response. The system takes in an uploaded aerial image,
+        divides it into 12 grid sections, and ranks each section based on urgency by combining disaster classification results
+        with population data. After the urgency ranking, the app also checks whether roads may be blocked and, if road access
+        is limited, highlights possible helicopter landing or staging areas.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Introduction</h2>
+      <p>
+        When a disaster hits, the bottleneck is often the lack of information. Responders don't know where the worst damage is,
+        which roads are blocked, or who is cut off. FirstFocus is a website model that ranks areas by severity, so responders go
+        to the highest-need spots first. We also identify blocked roads, risk roads, and possible helicopter landing zones for
+        easier accessibility after a disaster. Ultimately, our product is a dashboard summary of prioritized areas after a disaster.
+        This way, especially in areas with less documentation, emergency responders know where to go first and how to get there.
+        It works across earthquakes, floods, wildfires, cyclones, and landslides, all from one pipeline.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Methods</h2>
+      <p>
+        This project uses three pretrained CNN-based models. For the initial disaster or no disaster model, I used a ConvNeXt-Tiny
+        model which classified each grid cell as disaster-affected or normal. We initially tried a ViT-b-16 pretrained model, but
+        after it reached around the same accuracy as the ConvNeXt-Tiny model but requiring so much more storage, I opted into using
+        the CNN. There were 13207 normal images and 1827 disaster images in this dataset. Next, for the Road Access model, it scans
+        an uploaded aerial image for road conditions and classifies image patches as either clear road or blocked road, and outputs
+        a probability that the roads are inaccessible. I used a ResNet50 model for this one with 1870 good road images and 3595
+        broken road images. For the final model, the helicopter landing area model, it searches patches for open landing areas such
+        as stadiums, parking lots, and fields, in the case of blocked roads. It classifies each patch on the image as either a large
+        area or not a large area, and draws bounding boxes around likely landing locations. This model is trained on 3200 large and
+        3200 not large areas.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Results</h2>
+      <p>
+        The models achieved strong accuracy and classification performance across the disaster, road-access, and landing-area tasks.
+        Accuracy, F1 score, ROC-AUC, confusion matrices, and training/validation curves were used to evaluate performance. The high
+        performances were able to successfully distinguish disaster affected regions, blocked roads, and large open areas. The data
+        was all split with a 70 train, 15 test, 15 validation split, and received accuracies of 99.95, 100, and 99.67 percent
+        respectively, after training on 10 epochs with a batch size of 64.
+      </p>
+      <div class="project-results-grid">
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/first-focus/road-confusion-matrix.png" alt="Road access model confusion matrix">
+          <figcaption class="project-figure-caption">Road access model confusion matrix showing blocked-road versus clear-road classification.</figcaption>
+        </figure>
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/first-focus/disaster-confusion-matrix.png" alt="Disaster model confusion matrix">
+          <figcaption class="project-figure-caption">Disaster model confusion matrix for normal versus disaster-affected grid cells.</figcaption>
+        </figure>
+      </div>
+      <div class="project-results-grid">
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/first-focus/large-areas-confusion-matrix.png" alt="Large areas model confusion matrix">
+          <figcaption class="project-figure-caption">Large-area model confusion matrix for identifying likely helicopter landing or staging zones.</figcaption>
+        </figure>
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/first-focus/accuracy-graph.png" alt="Validation accuracy graph">
+          <figcaption class="project-figure-caption">Validation accuracy graph across training epochs for the emergency-response pipeline.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Market Analysis</h2>
+      <p>
+        For our market analysis our main target markets are regional and National Emergency Management agencies, humanitarian
+        organizations like the UN, and potentially insurance companies. Our main goal is to keep this tool accessible to all the
+        populations that need it, so we plan to sell our product as a partnership with these organizations rather than a paid service.
+        To actually gain feedback for our product we visited our local fire station and talked with the firefighters who stated that
+        our product would be useful in a real setting, especially in rural areas with less Incorporated roads. For our future steps,
+        we plan to partner with regional emergency response teams or fire departments. We also plan to factor in historical patterns
+        from similar natural disasters, along with before and after images of the disaster zone, into our calculations.
+      </p>
+    </section>
+
+    <p class="project-credit">Collaborators: Shannon Zhang, Yihang Lu</p>
+    <p class="project-credit">2026</p>
+  </main>
+</body>
+</html>
