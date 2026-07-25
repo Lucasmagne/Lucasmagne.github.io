@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Price Calculator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="project-page">
+  <main class="project-main">
+    <p><a class="back-link" href="/">Back home</a></p>
+
+    <section class="project-hero">
+      <div class="project-hero-text">
+        <h1>Diamond Price Calculator</h1>
+        <p class="project-subtitle">UChicago Summer Sessions: Pathways to Data Science</p>
+        <p class="project-tagline">A predictive modeling project exploring how carat, cut, color, and clarity influence diamond pricing.</p>
+        <div class="project-actions">
+          <a class="project-button" href="https://github.com/Lucasmagne/DiamondPricing" target="_blank" rel="noopener noreferrer">💎 Open Project</a>
+        </div>
+      </div>
+      <div class="project-hero-art"><img src="/images/diamond-pricing/uchicago-seal.jpeg" alt="University of Chicago seal"></div>
+    </section>
+
+    <section class="project-section">
+      <h2>Introduction</h2>
+      <p>
+        Across the world, diamonds are renowned for being the “ultimate gemstone.” In the context of jewelry, they symbolize commitment and love. Because of their massive value, diamonds are a major financial investment for the average consumer. Their price is measured by four categories: carat, cut, color, and clarity. In order to help people maximize their budget, our team wanted to answer the question - “Which of the 4 C’s (carat, cut, color, and clarity) affects diamond retail prices the most?” During analysis, our research question stayed consistent because of the data’s simplicity and readability.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Data Description</h2>
+      <div class="project-side-by-side">
+        <div class="project-side-by-side-text">
+          <p>
+            To answer our question, we used the Gemstone Price Dataset from Kaggle which originated from ggplot2. The dataset contains 53940 rows and 11 columns: Unnamed 0, carat, cut, color, clarity, depth, table, price, x, y, and z. We cleaned the data. Any rows with dimension values of 0 or duplicates were removed for being irrelevant, leaving us with 53755 rows. Finally, all columns except for carat, cut, color, clarity, and price were removed because we only needed these columns to answer our research question. Each of the 4 C’s have a specific value. For the features that were categorical variables, we found an online 1-8 scale to convert the values into numbers. We did this for the Cut, Clarity, and Color variables.
+          </p>
+        </div>
+        <figure class="project-inline-figure">
+          <img class="project-figure" src="/images/diamond-pricing/data-table.png" alt="Cleaned diamond dataset preview table">
+          <figcaption class="project-figure-caption">Preview of the cleaned dataset used for modeling and analysis.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Data Exploration</h2>
+      <div class="project-side-by-side">
+        <div class="project-side-by-side-text">
+          <p>
+            The dataset ended with 53755 rows and 8 columns. In order to get a better understanding of our cleaned dataset, we explored it with some visualizations. First, we graphed the scatter plot of carat vs price. For the color, cut, and clarity graphs, we used a box plot to prevent the categorical data from clumping around a few numbers on the x-axis. Interestingly, when the color quality increased, the price actually decreased. Next we made a correlation matrix. Carat and price had a value of 0.92, which symbolized a very high correlation.
+          </p>
+        </div>
+        <figure class="project-inline-figure">
+          <img class="project-figure" src="/images/diamond-pricing/exploration-plots.png" alt="Diamond pricing exploration plots">
+          <figcaption class="project-figure-caption">Exploratory plots for carat, color, cut, and clarity against price.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Model</h2>
+
+      <h3>Multiple Linear Regression</h3>
+      <div class="project-side-by-side">
+        <div class="project-side-by-side-text">
+          <p>
+            We assessed three different models to fit the data. Our first model was a multilinear regression model using the 4 C’s as features. We performed linear regressions between price, carat, cut, color, and clarity. After observing that the graph had an upwards curve, we used a second-degree polynomial linear regression model since we believed it would be a better fit. Using data split into an 80% train set and 20% test set, we fit the linear regression model on it and outputted our equation:
+          </p>
+          <p>
+            Price = -5707.877 + 3773.190(carat²)+ 145.228(cut_num) + 358.693(color_num) + 613.223(clarity_num)
+          </p>
+          <p>
+            Train R² Score: 0.841
+          </p>
+        </div>
+        <figure class="project-inline-figure">
+          <img class="project-figure" src="/images/diamond-pricing/correlation-matrix.png" alt="Correlation matrix of diamond price predictors">
+          <figcaption class="project-figure-caption">Correlation matrix showing the especially strong relationship between carat and price.</figcaption>
+        </figure>
+      </div>
+      <div class="project-results-grid">
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/diamond-pricing/carat-linear-fit.png" alt="Carat versus price linear regression fit">
+          <figcaption class="project-figure-caption">Linear fit of carat versus price.</figcaption>
+        </figure>
+        <figure class="project-results-figure">
+          <img class="project-figure" src="/images/diamond-pricing/carat-quadratic-fit.png" alt="Carat versus price quadratic regression fit">
+          <figcaption class="project-figure-caption">Quadratic fit of carat versus price.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Random Forest</h3>
+      <div class="project-side-by-side">
+        <div class="project-side-by-side-text">
+          <p>
+            Therefore, we chose a random forest model. The random forest model is better because it is able to capture non-linearities better than a standard linear regression model. For example, increasing the carat from 0.5 to 1.0 will not affect price the same way as an increase from 2.5 to 3.0, but on the linear regression model, these are treated as the same interval. It also requires little tuning and resists overfitting because each tree sees a slightly different dataset; they make different errors and averaging their results reduces variance. The random forest algorithm can also learn combinations of features. For example, large carat diamonds with high clarity get exponentially more expensive. This model works by bagging and training many different trees on random subsamples of the training data (drawn with replacement). Then, the model averages each tree’s predictions. Using 500 estimators, and a max depth of 10, we arrived at a
+          </p>
+          <p>
+            Test R² = 0.98
+          </p>
+          <p>
+            These results were much better than the linear regression model as the R² score was larger.
+          </p>
+        </div>
+        <figure class="project-inline-figure">
+          <img class="project-figure" src="/images/diamond-pricing/features-vs-price.png" alt="3D feature relationship between diamond price and the 4Cs">
+          <figcaption class="project-figure-caption">Feature relationships showing how carat dominates price while interacting with cut, clarity, and color.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Gradient Boosting</h3>
+      <p>
+        Finally, we implemented gradient boosting as it can also predict nonlinearities and interactions similar to a random forest, but it improves sequentially by correcting previous mistakes. A gradient boosting model works by combining multiple small decision trees. The model starts with an initial prediction for the price, then measures the residual between the actual and predicted prices of diamonds. It trains a small decision tree to predict these errors and adds it to the model. Repeating this many times allows the model to become more and more accurate. The hyperparameters used were 500 iterations of the model, maximum depth of 10 and a learning rate of 0.01. This resulted in a Test R² = 0.98
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Results</h2>
+      <p>
+        Based on the data, carat is by far the most important decider of price, followed by clarity, color, and cut. These numbers were decided by their coefficients from the linear regression. However, this model is not the one that we decided to use at the end. We decided to use the gradient boosting model at the end, as it produced the highest R² score and was the best representation of the data.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Presentation</h2>
+      <div class="pdf-wrapper">
+        <iframe
+          src="/files/diamond-pricing/Presentation%20-%20Project%205%20Diamonds.pdf"
+          title="Diamond Price Calculator presentation">
+        </iframe>
+      </div>
+      <p class="project-figure-caption">
+        If the presentation does not load inline, you can open it directly here:
+        <a href="/files/diamond-pricing/Presentation%20-%20Project%205%20Diamonds.pdf" target="_blank" rel="noopener noreferrer">Presentation - Project 5 Diamonds.pdf</a>
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Report</h2>
+      <div class="pdf-wrapper">
+        <iframe
+          src="/files/diamond-pricing/Report%20-%20Project%205%20Diamonds.pdf"
+          title="Diamond Price Calculator report">
+        </iframe>
+      </div>
+      <p class="project-figure-caption">
+        If the report does not load inline, you can open it directly here:
+        <a href="/files/diamond-pricing/Report%20-%20Project%205%20Diamonds.pdf" target="_blank" rel="noopener noreferrer">Report - Project 5 Diamonds.pdf</a>
+      </p>
+    </section>
+
+    <p class="project-credit">Collaborators: Eric Yan, Dheeraj Garg, William Lu</p>
+  </main>
+</body>
+</html>

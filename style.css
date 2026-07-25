@@ -120,6 +120,16 @@ main {
   flex-shrink: 0;
 }
 
+.project-hero-art {
+  flex-shrink: 0;
+}
+
+.project-hero-art img {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
 .project-page {
   background: #fff;
 }
@@ -145,6 +155,14 @@ main {
   line-height: 1.7;
   max-width: 620px;
   color: #444;
+}
+
+.project-subtitle {
+  margin: -2px 0 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #7a3f3f;
+  font-weight: 600;
 }
 
 .project-section {
@@ -314,6 +332,10 @@ main {
 
   .project-hero-emoji {
     font-size: 5rem;
+  }
+
+  .project-hero-art img {
+    width: 140px;
   }
 
   .project-section {
