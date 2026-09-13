@@ -5,6 +5,75 @@ body {
   color: #111;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #e8e8e8;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-home {
+  color: #111;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-home:hover {
+  color: #555;
+}
+
+.site-tabs {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+  overflow-x: auto;
+}
+
+.site-tab {
+  position: relative;
+  padding: 18px 0 15px;
+  border: 0;
+  background: transparent;
+  color: #777;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.site-tab:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.site-tab.active {
+  color: #111;
+}
+
+.site-tab.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #111;
+}
+
 main {
   max-width: 1000px;
   margin: 0 auto;
@@ -307,6 +376,18 @@ main {
 }
 
 @media (max-width: 768px) {
+  .site-header-inner {
+    gap: 24px;
+  }
+
+  .site-tabs {
+    gap: 24px;
+  }
+
+  .site-tab {
+    font-size: 0.95rem;
+  }
+
   .intro {
     flex-direction: column;
     align-items: flex-start;
