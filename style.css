@@ -137,6 +137,50 @@ main {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
+.home-section-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px 32px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.12);
+}
+
+.home-section-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.home-section-card p {
+  margin: 0;
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.home-section-arrow {
+  flex-shrink: 0;
+  font-size: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.home-section-card:hover .home-section-arrow {
+  transform: translateX(5px);
+}
+
 .projects h1,
 .projects h2 {
   margin-bottom: 20px;
