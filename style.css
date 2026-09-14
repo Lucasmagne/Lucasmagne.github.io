@@ -1,4 +1,7 @@
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   margin: 0;
   background: #fff;
@@ -89,9 +92,18 @@ body {
 }
 
 main {
+  flex: 1;
   max-width: 1000px;
   margin: 0 auto;
   padding: 48px 20px;
+}
+
+.site-footer {
+  padding: 24px 20px;
+  border-top: 1px solid #ededed;
+  color: #777;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .intro {
