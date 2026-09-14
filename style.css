@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&display=swap');
+
 body {
   display: flex;
   flex-direction: column;
@@ -29,11 +31,24 @@ body {
 
 .site-home {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 18px 0 15px;
   color: #111;
-  font-size: 1rem;
+  font-family: "Almendra", Georgia, serif;
+  font-size: 1.3rem;
   font-weight: 700;
+  line-height: 1;
   text-decoration: none;
+}
+
+.site-home::before {
+  content: '';
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  background: url('/images/home-icon.svg') center / contain no-repeat;
 }
 
 .site-home:hover {
