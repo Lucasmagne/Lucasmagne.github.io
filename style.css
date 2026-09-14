@@ -99,10 +99,11 @@ main {
 }
 
 .site-footer {
-  padding: 24px 20px;
+  padding: 18px 20px 30px;
   border-top: 1px solid #ededed;
-  color: #777;
+  color: #666;
   font-size: 0.9rem;
+  text-indent: 10px;
   text-align: center;
 }
 
@@ -191,6 +192,80 @@ main {
 
 .home-section-card:hover .home-section-arrow {
   transform: translateX(5px);
+}
+
+.initiative-main {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.initiative-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  padding: 52px;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f6f8f4 100%);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
+}
+
+.initiative-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initiative-logo img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.initiative-label {
+  margin: 0 0 12px;
+  color: #64705f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.initiative-card h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1;
+}
+
+.initiative-description {
+  max-width: 720px;
+  margin: 0 0 30px;
+  color: #444;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.initiative-button {
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.initiative-button:hover {
+  transform: translateY(-2px);
+  background: #333;
 }
 
 .projects h1,
@@ -457,6 +532,20 @@ main {
 
   .site-tab {
     font-size: 0.95rem;
+  }
+
+  .initiative-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 34px 24px;
+  }
+
+  .initiative-logo img {
+    max-width: 220px;
+  }
+
+  .initiative-description {
+    font-size: 1.05rem;
   }
 
   .intro {
