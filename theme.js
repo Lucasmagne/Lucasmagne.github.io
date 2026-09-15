@@ -56,9 +56,63 @@
     header.appendChild(button);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupThemeToggle);
-  } else {
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    const copied = document.execCommand('copy');
+    textArea.remove();
+
+    if (!copied) throw new Error('Unable to copy email address');
+  }
+
+  function setupEmailCopy() {
+    const button = document.querySelector('.social-email');
+    const status = document.querySelector('.email-copy-status');
+    if (!button) return;
+
+    let resetTimer;
+    button.addEventListener('click', async function () {
+      const email = button.dataset.email;
+
+      try {
+        await copyText(email);
+        button.classList.add('copied');
+        button.setAttribute('aria-label', 'Email copied');
+        button.title = 'Copied!';
+        if (status) status.textContent = `${email} copied to clipboard`;
+
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+          button.classList.remove('copied');
+          button.setAttribute('aria-label', 'Copy email address');
+          button.title = 'Copy email address';
+          if (status) status.textContent = '';
+        }, 1800);
+      } catch (error) {
+        button.title = email;
+        if (status) status.textContent = `Copy failed. Email address: ${email}`;
+      }
+    });
+  }
+
+  function setupPageInteractions() {
     setupThemeToggle();
+    setupEmailCopy();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupPageInteractions);
+  } else {
+    setupPageInteractions();
   }
 })();
