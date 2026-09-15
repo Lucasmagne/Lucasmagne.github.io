@@ -75,11 +75,13 @@
     if (!copied) throw new Error('Unable to copy email address');
   }
 
-  function setupFooterContacts() {
-    const contacts = document.querySelector('.footer-contacts');
-    if (!contacts || contacts.children.length) return;
+  function setupContactGroups() {
+    const contactGroups = document.querySelectorAll('.footer-contacts, .intro-contacts');
 
-    contacts.innerHTML = `
+    contactGroups.forEach(function (contacts) {
+      if (contacts.children.length) return;
+
+      contacts.innerHTML = `
       <a class="social-link social-instagram" href="https://www.instagram.com/lucas.magne_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <rect x="3" y="3" width="18" height="18" rx="5"/>
@@ -104,41 +106,47 @@
         </svg>
       </button>
       <span class="sr-only email-copy-status" aria-live="polite"></span>`;
+    });
   }
 
   function setupEmailCopy() {
-    const button = document.querySelector('.social-email');
-    const status = document.querySelector('.email-copy-status');
-    if (!button) return;
+    const buttons = document.querySelectorAll('.social-email');
 
-    let resetTimer;
-    button.addEventListener('click', async function () {
-      const email = button.dataset.email;
+    buttons.forEach(function (button) {
+      if (button.dataset.copyReady === 'true') return;
+      button.dataset.copyReady = 'true';
 
-      try {
-        await copyText(email);
-        button.classList.add('copied');
-        button.setAttribute('aria-label', 'Email copied');
-        button.title = 'Copied!';
-        if (status) status.textContent = `${email} copied to clipboard`;
+      const status = button.parentElement.querySelector('.email-copy-status');
+      let resetTimer;
 
-        clearTimeout(resetTimer);
-        resetTimer = setTimeout(function () {
-          button.classList.remove('copied');
-          button.setAttribute('aria-label', 'Copy email address');
-          button.title = 'Copy email address';
-          if (status) status.textContent = '';
-        }, 1800);
-      } catch (error) {
-        button.title = email;
-        if (status) status.textContent = `Copy failed. Email address: ${email}`;
-      }
+      button.addEventListener('click', async function () {
+        const email = button.dataset.email;
+
+        try {
+          await copyText(email);
+          button.classList.add('copied');
+          button.setAttribute('aria-label', 'Email copied');
+          button.title = 'Copied!';
+          if (status) status.textContent = `${email} copied to clipboard`;
+
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(function () {
+            button.classList.remove('copied');
+            button.setAttribute('aria-label', 'Copy email address');
+            button.title = 'Copy email address';
+            if (status) status.textContent = '';
+          }, 1800);
+        } catch (error) {
+          button.title = email;
+          if (status) status.textContent = `Copy failed. Email address: ${email}`;
+        }
+      });
     });
   }
 
   function setupPageInteractions() {
     setupThemeToggle();
-    setupFooterContacts();
+    setupContactGroups();
     setupEmailCopy();
   }
 

@@ -199,8 +199,16 @@ main {
   flex: 1;
 }
 
+.intro-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
 .intro h1 {
-  margin: 0 0 12px;
+  margin: 0;
   font-family: "Almendra", Georgia, serif;
   font-size: 3.25rem;
   font-weight: 700;
@@ -208,7 +216,8 @@ main {
   line-height: 1;
 }
 
-.footer-contacts {
+.footer-contacts,
+.intro-contacts {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -286,6 +295,16 @@ main {
 
 .social-email.copied::after {
   opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.intro-contacts .social-email::after {
+  top: calc(100% + 8px);
+  bottom: auto;
+  transform: translate(-50%, -3px);
+}
+
+.intro-contacts .social-email.copied::after {
   transform: translate(-50%, 0);
 }
 
