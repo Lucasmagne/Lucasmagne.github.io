@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&display=swap');
 
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -8,6 +16,7 @@ body {
   margin: 0;
   background: #fff;
   color: #111;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .site-header {
@@ -69,9 +78,54 @@ body {
 
 .site-tabs {
   display: flex;
+  min-width: 0;
   gap: 32px;
   margin-left: auto;
   overflow-x: auto;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  margin-left: 20px;
+  padding: 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 50%;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: #999;
+  transform: rotate(8deg);
+}
+
+.theme-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-icon-sun {
+  display: block;
 }
 
 .site-tab {
@@ -657,13 +711,155 @@ main {
   color: #31412b;
 }
 
+:root[data-theme='dark'] body,
+:root[data-theme='dark'] .project-page {
+  background: #111315;
+  color: #f3f1eb;
+}
+
+:root[data-theme='dark'] .site-header {
+  background: rgba(17, 19, 21, 0.94);
+  border-bottom-color: #2d3135;
+}
+
+:root[data-theme='dark'] .site-home,
+:root[data-theme='dark'] .site-tab.active {
+  color: #f3f1eb;
+}
+
+:root[data-theme='dark'] .site-home:hover,
+:root[data-theme='dark'] .site-tab {
+  color: #aaa9a5;
+}
+
+:root[data-theme='dark'] .site-home.active::after,
+:root[data-theme='dark'] .site-tab.active::after {
+  background: #f3f1eb;
+}
+
+:root[data-theme='dark'] .site-home::before {
+  filter: invert(1);
+}
+
+:root[data-theme='dark'] .theme-toggle,
+:root[data-theme='dark'] .social-link {
+  border-color: #45494d;
+  color: #d7d5cf;
+}
+
+:root[data-theme='dark'] .theme-toggle:hover {
+  border-color: #85898d;
+}
+
+:root[data-theme='dark'] .social-github:hover {
+  border-color: #f3f1eb;
+  color: #f3f1eb;
+}
+
+:root[data-theme='dark'] .site-footer {
+  border-top-color: #292d31;
+  color: #a5a49f;
+}
+
+:root[data-theme='dark'] .home-section-card,
+:root[data-theme='dark'] .card {
+  border-color: #2d3135;
+  background: #191c1f;
+  color: #f3f1eb;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme='dark'] .home-section-card:hover,
+:root[data-theme='dark'] .card:hover {
+  box-shadow: 0 9px 26px rgba(0, 0, 0, 0.38);
+}
+
+:root[data-theme='dark'] .home-section-card p,
+:root[data-theme='dark'] .initiative-description,
+:root[data-theme='dark'] .project-tagline,
+:root[data-theme='dark'] .project-figure-caption,
+:root[data-theme='dark'] .project-credit,
+:root[data-theme='dark'] .back-link {
+  color: #b8b7b2;
+}
+
+:root[data-theme='dark'] .back-link:hover {
+  color: #f3f1eb;
+}
+
+:root[data-theme='dark'] .initiative-card {
+  border-color: #34312e;
+  background: linear-gradient(135deg, #1b1b1a 0%, #211c19 100%);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34);
+}
+
+:root[data-theme='dark'] .initiative-label {
+  color: #d58b70;
+}
+
+:root[data-theme='dark'] .research-card {
+  border-color: #2e3934;
+  background: linear-gradient(135deg, #191c1b 0%, #17221d 100%);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34);
+}
+
+:root[data-theme='dark'] .research-card p {
+  color: #aebbb4;
+}
+
+:root[data-theme='dark'] .project-button {
+  background: #f3f1eb;
+  color: #111315;
+}
+
+:root[data-theme='dark'] .project-button:hover {
+  background: #d9d7d1;
+}
+
+:root[data-theme='dark'] .project-subtitle {
+  color: #d69a9a;
+}
+
+:root[data-theme='dark'] .project-section {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(27, 30, 33, 0.9);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme='dark'] .project-section p {
+  color: #dedcd6;
+}
+
+:root[data-theme='dark'] .live-shell {
+  border-color: rgba(146, 174, 127, 0.22);
+  background: rgba(25, 29, 27, 0.94);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme='dark'] .live-note {
+  color: #b8c3b1;
+}
+
+:root[data-theme='dark'] .live-panel {
+  border-color: rgba(146, 174, 127, 0.2);
+  background: rgba(31, 35, 32, 0.96);
+}
+
+:root[data-theme='dark'] .live-output {
+  color: #d7e2d0;
+}
+
 @media (max-width: 768px) {
   .site-header-inner {
-    gap: 24px;
+    gap: 16px;
   }
 
   .site-tabs {
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .theme-toggle {
+    margin-left: 0;
   }
 
   .site-tab {
