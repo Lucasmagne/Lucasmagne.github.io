@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Machine Learning Equipped Drone for Early Detection of Wildfires</title>
-  <link rel="stylesheet" href="/style.css">
+  <title>Machine Learning-Equipped Drone for Early Detection of Wildfires</title>
+  <link rel="stylesheet" href="/style.css?v=20261004">
   <script src="../../theme.js"></script>
 </head>
 <body class="project-page">
@@ -23,7 +23,7 @@
 
     <section class="project-hero">
       <div class="project-hero-text">
-        <h1>Machine Learning Equipped Drone for Early Detection of Wildfires</h1>
+        <h1>Machine Learning-Equipped Drone for Early Detection of Wildfires</h1>
         <div class="project-actions">
           <a class="project-button" href="https://github.com/Lucasmagne/Wildfire-Drone" target="_blank" rel="noopener noreferrer">🔥 Open Project</a>
         </div>
@@ -53,20 +53,20 @@
     <section class="project-section">
       <h2>Methods</h2>
       <p>
-        The dataset, comprising approximately 5750 entries for both fire and non-fire data points, was gathered through a systematic process.
-        Every datapoint had a satellite image of the vegetation, the highest temperature of the day, and the humidity present at the time.
-        The data collection process was guided by the US Homeland Security map of wildfire risk.
+        The dataset, comprising approximately 5,750 fire and non-fire data points, was gathered through a systematic process.
+        Every data point included a satellite image of the vegetation, the highest temperature of the day, and the humidity at the time.
+        The data collection process was guided by the U.S. Department of Homeland Security's wildfire risk map.
         The tools we used for data collection were the Google Earth Pro app (satellite image), Wikipedia (fire information), and timeanddate.com / wunderground.com (temperature/humidity data).
         The drone cost $150, and the sensor was $50.
-        We attached a SensorPush sensor on the drone using rubber bands that collects the temperature and humidity data.
-        The drone collects a bird's-eye view image of the vegetation and sends it directly to our back-end servers.
+        We attached a SensorPush sensor to the drone using rubber bands to collect temperature and humidity data.
+        The drone captures a bird's-eye-view image of the vegetation and sends it directly to our backend servers.
         After developing the model, we built a website that allows the user to input data and receive a fire risk probability for their location.
       </p>
       <p>
         To create the machine learning model, we used Python's TensorFlow library, which offers a set of tools for building and training models.
         We created two separate model structures for the data, which consisted of temperature and humidity values, and image data, which is a satellite image of the vegetation.
-        For the numeric data, we used a Multi-layer Perception (MLP) model because this type of model is great at recognizing patterns in small amounts of data.
-        For the image data, we used a Convolutional Neural Network (CNN) model, which is a common way to analyze images.
+        For the numeric data, we used a multilayer perceptron (MLP) because this type of model is effective at recognizing patterns in small datasets.
+        For the image data, we used a convolutional neural network (CNN), a common architecture for image analysis.
         The outputs of these two models are then concatenated together and processed with a linear activation layer to produce the final result, which is the risk index of the data.
       </p>
     </section>
@@ -90,9 +90,9 @@
       </div>
       <p>
         We collected 445 data points, each containing an image of the vegetation and temperature and humidity values.
-        We inputted these data points into our model, which gave us the risk index of each point.
+        We entered these data points into our model, which produced a risk index for each point.
         The plot shows the correlation of risk index and temperature/humidity values.
-        Overall, areas with high temperature and low humidity tend to have higher risk indexes.
+        Overall, areas with high temperatures and low humidity tend to have higher risk indices.
         We can also see that the risk index of areas with similar temperature/humidity values can still vary, which suggests that the vegetation image captured by the drone also plays an important role in determining the final risk index.
       </p>
       <p>

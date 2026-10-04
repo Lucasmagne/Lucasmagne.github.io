@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Face2Emoji</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=20261004">
   <script src="../../theme.js"></script>
 </head>
 <body class="project-page face2emoji-page">
@@ -33,7 +33,7 @@
     <section class="project-section">
       <h2>What It Does</h2>
       <p>
-        This is Face2Emoji, a web based application that reads a user's live facial expression and translates it into an emoji in real time.
+        Face2Emoji is a web-based application that reads a user's live facial expression and translates it into an emoji in real time.
         In this application, users open the website and the site uses the camera to capture live facial expressions from the user.
         Then, the machine learning model embedded in the website analyzes the face and predicts the emotion.
         The matching emoji and label then appear on the screen.
@@ -45,8 +45,8 @@
       <h2>How We Built It</h2>
       <p>
         First, we organized and collected a bunch of facial expression datasets into the following classes: happy, sad, angry, scared, surprised, wink, and neutral.
-        There are 9112 images total.
-        Then, we used a ResNet18 model, a Convolutional Neural Network (CNN), with resized 160x160 images, 24 epochs, and batch sizes of 64 to train the model to classify emotions.
+        There are 9,112 images in total.
+        Then, we used a ResNet-18 convolutional neural network (CNN) with images resized to 160 × 160 pixels, 24 epochs, and a batch size of 64 to train the model to classify emotions.
         This CNN first learns simple features such as edges, lines, and curves.
         In the next layers, it combines these simple features into larger parts such as eyes and mouth.
         In the deeper layers, it learns more complex patterns related to the specific expressions.
@@ -94,7 +94,7 @@
       </div>
     </section>
 
-    <p class="project-credit">Full code here: <a href="https://github.com/ivy-cloud/emojis" target="_blank" rel="noopener noreferrer">ivy-cloud/emojis</a></p>
+    <p class="project-credit">Full code: <a href="https://github.com/ivy-cloud/emojis" target="_blank" rel="noopener noreferrer">ivy-cloud/emojis</a></p>
     <p class="project-credit">Collaborators: Ivy Zan</p>
     <p class="project-credit">2026</p>
   </main>

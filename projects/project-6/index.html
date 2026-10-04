@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>First Focus</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=20261004">
   <script src="../../theme.js"></script>
 </head>
 <body class="project-page">
@@ -58,7 +58,7 @@
       <h2>Introduction</h2>
       <p>
         When a disaster hits, the bottleneck is often the lack of information. Responders don't know where the worst damage is,
-        which roads are blocked, or who is cut off. FirstFocus is a website model that ranks areas by severity, so responders go
+        which roads are blocked, or who is cut off. First Focus is a web-based system that ranks areas by severity, so responders go
         to the highest-need spots first. We also identify blocked roads, risk roads, and possible helicopter landing zones for
         easier accessibility after a disaster. Ultimately, our product is a dashboard summary of prioritized areas after a disaster.
         This way, especially in areas with less documentation, emergency responders know where to go first and how to get there.
@@ -69,13 +69,13 @@
     <section class="project-section">
       <h2>Methods</h2>
       <p>
-        This project uses three pretrained CNN-based models. For the initial disaster or no disaster model, I used a ConvNeXt-Tiny
+        This project uses three pretrained CNN-based models. For the initial disaster-or-no-disaster model, I used a ConvNeXt Tiny
         model which classified each grid cell as disaster-affected or normal. We initially tried a ViT-b-16 pretrained model, but
-        after it reached around the same accuracy as the ConvNeXt-Tiny model but requiring so much more storage, I opted into using
-        the CNN. There were 13207 normal images and 1827 disaster images in this dataset. Next, for the Road Access model, it scans
+        after it reached around the same accuracy as the ConvNeXt Tiny model while requiring significantly more storage, I opted for
+        the CNN. There were 13,207 normal images and 1,827 disaster images in this dataset. Next, the road-access model scans
         an uploaded aerial image for road conditions and classifies image patches as either clear road or blocked road, and outputs
         a probability that the roads are inaccessible. I used a ResNet50 model for this one with 1870 good road images and 3595
-        broken road images. For the final model, the helicopter landing area model, it searches patches for open landing areas such
+        broken-road images. The final model, the helicopter landing-area model, searches patches for open landing areas such
         as stadiums, parking lots, and fields, in the case of blocked roads. It classifies each patch on the image as either a large
         area or not a large area, and draws bounding boxes around likely landing locations. This model is trained on 3200 large and
         3200 not large areas.
@@ -87,8 +87,8 @@
       <p>
         The models achieved strong accuracy and classification performance across the disaster, road-access, and landing-area tasks.
         Accuracy, F1 score, ROC-AUC, confusion matrices, and training/validation curves were used to evaluate performance. The high
-        performances were able to successfully distinguish disaster affected regions, blocked roads, and large open areas. The data
-        was all split with a 70 train, 15 test, 15 validation split, and received accuracies of 99.95, 100, and 99.67 percent
+        performance allowed the system to distinguish disaster-affected regions, blocked roads, and large open areas. The data
+        was split into 70% training, 15% testing, and 15% validation sets, producing accuracies of 99.95%, 100%, and 99.67%,
         respectively, after training on 10 epochs with a batch size of 64.
       </p>
       <div class="project-results-grid">
@@ -140,7 +140,7 @@
       </p>
     </section>
 
-    <p class="project-credit">Full code here: <a href="https://github.com/Lucasmagne/NatDisasterRank" target="_blank" rel="noopener noreferrer">Lucasmagne/NatDisasterRank</a></p>
+    <p class="project-credit">Full code: <a href="https://github.com/Lucasmagne/NatDisasterRank" target="_blank" rel="noopener noreferrer">Lucasmagne/NatDisasterRank</a></p>
     <p class="project-credit">Collaborators: Shannon Zhang, Yihang Lu</p>
     <p class="project-credit">2026</p>
   </main>

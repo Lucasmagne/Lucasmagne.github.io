@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra:wght@700&family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
 :root {
   color-scheme: light;
@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   margin: 0;
   background: #fff;
   color: #111;
@@ -283,7 +283,7 @@ main {
   border-radius: 6px;
   background: #111;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   white-space: nowrap;
