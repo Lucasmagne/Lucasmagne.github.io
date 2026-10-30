@@ -508,7 +508,15 @@ main {
 }
 
 .research-list h1 {
-  margin: 0 0 24px;
+  margin: 0 0 10px;
+}
+
+.research-intro {
+  max-width: 720px;
+  margin: 0 0 28px;
+  color: #666;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .research-grid {
@@ -903,6 +911,10 @@ main {
 
 :root[data-theme='dark'] .research-paper-meta {
   color: #999;
+}
+
+:root[data-theme='dark'] .research-intro {
+  color: #aaa7a0;
 }
 
 :root[data-theme='dark'] .research-paper-card p:last-child {
