@@ -498,39 +498,63 @@ main {
 }
 
 .research-main {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.research-list,
+.research-grid {
+  width: 100%;
+}
+
+.research-list h1 {
+  margin: 0 0 24px;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.research-paper-card {
   display: flex;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 32px;
+  border: 1px solid #e7e7e7;
 }
 
-.research-card {
-  width: 100%;
-  padding: 72px 32px;
-  box-sizing: border-box;
-  border: 1px solid #e7ece9;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ffffff 0%, #f1f7f3 100%);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
-  text-align: center;
+.research-paper-copy {
+  min-width: 0;
 }
 
-.research-face {
-  margin-bottom: 16px;
-  font-size: 4.5rem;
-  line-height: 1;
+.research-paper-meta {
+  margin: 0 0 8px;
+  color: #777;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.research-card h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+.research-paper-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
 }
 
-.research-card p {
+.research-paper-card p:last-child {
   margin: 0;
-  color: #526059;
-  font-size: 1.15rem;
-  line-height: 1.6;
+  color: #555;
+  line-height: 1.5;
+}
+
+.research-paper-link {
+  flex-shrink: 0;
+  color: #333;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .projects h1,
@@ -877,14 +901,16 @@ main {
   color: #d58b70;
 }
 
-:root[data-theme='dark'] .research-card {
-  border-color: #2e3934;
-  background: linear-gradient(135deg, #191c1b 0%, #17221d 100%);
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34);
+:root[data-theme='dark'] .research-paper-meta {
+  color: #999;
 }
 
-:root[data-theme='dark'] .research-card p {
-  color: #aebbb4;
+:root[data-theme='dark'] .research-paper-card p:last-child {
+  color: #b7b5af;
+}
+
+:root[data-theme='dark'] .research-paper-link {
+  color: #f3f1eb;
 }
 
 :root[data-theme='dark'] .project-button {
@@ -986,6 +1012,13 @@ main {
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .research-paper-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
   }
 
   .project-hero {
